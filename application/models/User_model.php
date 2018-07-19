@@ -18,11 +18,11 @@ class User_model extends CI_Model
             $query = $this->db->get('users');
             return $query->result_array();
         }
-        $query = $this->db->get_where('users', array('slug'=>$id ));
+        $query = $this->db->get_where('users', array('id'=>$id ));
         return $query->row_array();
     }
 
-    public function insert($id,$display_name,$status){
+    public function insert_user($id,$display_name,$status){
         $data = array(
             'id' => $id,
             'display_name' => $display_name,

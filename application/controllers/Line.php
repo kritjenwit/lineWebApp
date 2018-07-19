@@ -18,7 +18,7 @@ class Line extends CI_Controller
 
     private $access_token = '7ClZwOxLbE9T0n5upRmHqT0EvM+mJA+aMDntG+7qScI3p7LKV4Cb+biLAaj0rKnM+icuF0U2ZGzt7o2SC5OeNbHfGvQJ4f30OcCKEyIthL2LN6KB2OGi1sTnZvGjjohN6uA4H4PKfxE/pWFoV6GqRAdB04t89/1O/w1cDnyilFU=';
     private $channelSecret = 'a24dfd8f0a0acab89229f4a0fe0ef22f';
-    private $user_id = 'U9c57d73a04115de0c348c9502ca14f2c';
+//    private $user_id = 'U9c57d73a04115de0c348c9502ca14f2c';
     public $bot;
     public $httpClient;
 
@@ -36,8 +36,18 @@ class Line extends CI_Controller
                 $this->bot->pushMessage($id, new TextMessageBuilder($work['name'] . ' is done'));
             }
         }
-        $this->bot->pushMessage($id,new TextMessageBuilder('Please wait for the contact'));
-        redirect('user');
+        $users = $this->user_model->get_user($id);
+        $works = $this->work_model->get_work();
+        foreach ($works as $work){
+            if($users['id'] == $work['user_id']){
+                $this->bot->pushMessage($id,new TextMessageBuilder('Please wait for the contact'));
+                return redirect('user');
+            }else{
+                $this->bot->pushMessage($id,new TextMessageBuilder('You dont have any work'));
+                return redirect('user');
+            }
+        }
+
     }
 
     public function broadcast_all(){
@@ -85,5 +95,21 @@ class Line extends CI_Controller
 
         redirect('/');
 
+    }
+
+    public function send_message(){
+
+
+        $id = $this->input->post('id');
+        $msg = $this->input->post('message');
+
+        if(empty($msg)){
+            $this->session->set_flashdata('error', 'Message should not be empty');
+            redirect('message');
+        }
+
+        $this->bot->pushMessage($id,new TextMessageBuilder($msg));
+
+        redirect('message');
     }
 }
