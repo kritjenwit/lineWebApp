@@ -1,0 +1,9 @@
+.undone-jumbotron:hover{
+    transition: .5s ease;
+    background-color: lightgray;
+    opacity: 0.7;
+}
+
+.mini-jumbotron{
+    background-color: lightgray;
+}
