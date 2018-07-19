@@ -7,7 +7,7 @@
         <td>display name</td>
         <td>status message</td>
         <td>Created at</td>
-        <td>Send message</td>
+        <td>send status message</td>
     </tr>
     </thead>
 
@@ -22,7 +22,7 @@
         <td><?php echo $user['created_at'] ?></td>
         <td>
             <?php echo form_open('line/send/' .$user['id']) ?>
-                <input type="submit" value="Send" id="send" class="btn btn-success">
+                <input type="submit" value="Send" id="send" class="btn btn-success btn-block">
             </form>
         </td>
     </tr>

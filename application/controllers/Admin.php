@@ -100,4 +100,18 @@
             $this->load->view('templates/footer');
         }
 
+        public function profile(){
+            if(!$this->session->userdata('logged')){
+                redirect('login');
+            }
+
+            $id = $this->session->userdata('id');
+
+            $data['user'] = $this->user_model->get_user($id);
+            $data['title'] = 'Profile';
+            $this->load->view('templates/header',  $data);
+            $this->load->view('admin/profile', $data);
+            $this->load->view('templates/footer');
+        }
+
     }

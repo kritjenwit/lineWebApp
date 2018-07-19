@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
     <script src="<?php echo base_url()?>assets/js/main.js"></script>
     <title><?php echo $title ; ?></title>
 </head>
@@ -53,10 +54,10 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><?php echo $this->session->userdata('display_name') ?></a>
+                    <a href="<?php echo base_url() ?>profile" class="nav-link"><?php echo $this->session->userdata('display_name') ?></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><img class="rounded-circle" style="width: 33px;height: 33px;" src="<?php echo $this->session->userdata('img') ?>" alt="user dsiplay image"></a>
+                    <a href="<?php echo base_url() ?>profile" class="nav-link"><img class="rounded-circle" style="width: 33px;height: 33px;" src="<?php echo $this->session->userdata('img') ?>" alt="user dsiplay image"></a>
                 </li>
             </ul>
         </div>
