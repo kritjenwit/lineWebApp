@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'admin/index';
 # --- Add from here -----
 
+
 $route['message'] = 'admin/message';
 $route['logout'] = 'authorize/logout';
 $route['authorized'] = 'authorize/authorized';

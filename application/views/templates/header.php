@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/main.js"></script>
     <title><?php echo $title ; ?></title>
 </head>
 <body>
@@ -17,7 +18,7 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="<?php echo base_url() ?>">LineWebBot</a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

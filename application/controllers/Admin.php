@@ -2,6 +2,11 @@
 
     class Admin extends CI_Controller{
 
+        public function __construct()
+        {
+            parent::__construct();
+        }
+
         public function index(){
 
             if(!$this->session->userdata('logged')){
@@ -94,4 +99,5 @@
             $this->load->view('admin/message', $data);
             $this->load->view('templates/footer');
         }
+
     }

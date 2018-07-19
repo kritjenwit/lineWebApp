@@ -6,8 +6,8 @@
                 <div class="card-header">
                     <?php echo form_open('line/send_message') ?>
                         <div class="form-gruop">
-                            <label for="">Name</label>
-                            <select class="form-control" name="id">
+                            <label for="">Send to</label>
+                            <select class="form-control" name="id[]" multiple>
                                 <?php foreach ($users as $user): ?>
                                     <option value="<?php echo $user['id'] ?>"><?php echo $user['display_name'] ?></option>
                                 <?php endforeach; ?>

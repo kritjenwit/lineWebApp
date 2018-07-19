@@ -98,18 +98,22 @@ class Line extends CI_Controller
     }
 
     public function send_message(){
-
-
         $id = $this->input->post('id');
         $msg = $this->input->post('message');
-
+        print_r($id);
+        if(empty($id) && empty($msg)){
+            $this->session->set_flashdata('error', 'Message should not be empty and Please select at least one user');
+            redirect('message');
+        }
         if(empty($msg)){
             $this->session->set_flashdata('error', 'Message should not be empty');
             redirect('message');
         }
-
-        $this->bot->pushMessage($id,new TextMessageBuilder($msg));
-
+        if(empty($id)){
+            $this->session->set_flashdata('error', 'Please select at least one user');
+            redirect('message');
+        }
+        $this->bot->multicast($id,new TextMessageBuilder($msg,'send by '.$this->session->userdata('display_name')));
         redirect('message');
     }
 }
