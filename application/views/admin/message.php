@@ -7,13 +7,17 @@
                     <?php echo form_open('line/send_message') ?>
                         <div class="form-gruop">
                             <label for="">Send to</label>
-                            <select class="form-control" name="id[]" multiple>
+                            <select class="form-control" name="id[]" id="user_id" multiple>
                                 <?php foreach ($users as $user): ?>
                                     <option value="<?php echo $user['id'] ?>"><?php echo $user['display_name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
+                            <br>
+                            <div class="form-group text-center">
+                                <button id="select-all" class="btn" onclick="return false">Select All</button>
+                            </div>
                         </div>
-                        <br>
+                        
                         <div class="form-group">
                             <label for="">Message</label>
                             <textarea name="message" class="form-control" placeholder="type the message to user"></textarea>

@@ -59,6 +59,7 @@
                 <li class="nav-item">
                     <a href="<?php echo base_url() ?>profile" class="nav-link"><img class="rounded-circle" style="width: 33px;height: 33px;" src="<?php echo $this->session->userdata('img') ?>" alt="user dsiplay image"></a>
                 </li>
+                <li class="nav-item"><a href="logout" class="nav-link">logout</a></li>
             </ul>
         </div>
     </div>

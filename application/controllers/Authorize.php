@@ -20,7 +20,7 @@ class Authorize extends CI_Controller
 
     private $client_id = "1595017693";
     private $client_secret = "bf483619feaac2511ba5bbb696524b7b";
-    private $redirect_uri = "http://056eff96.ngrok.io/line/line-admin2/authorized";
+    private $redirect_uri = "http://35155742.ngrok.io/line/line-admin2/authorized";
     private $token;
     public $bot;
     public $httpClient;
@@ -37,7 +37,7 @@ class Authorize extends CI_Controller
         $data['line'] = 'https://access.line.me/oauth2/v2.1/authorize?';
         $data['line'] .= 'response_type=code&';
         $data['line'] .= 'client_id=1595017693&';
-        $data['line'] .= 'redirect_uri=http://056eff96.ngrok.io/line/line-admin2/authorized&';
+        $data['line'] .= 'redirect_uri='. $this->redirect_uri .'&';
         $data['line'] .= 'state=12345abcde&';
         $data['line'] .= 'scope=profile%20openid%20email&';
         $data['line'] .= 'bot_prompt=aggressive&';
@@ -80,7 +80,7 @@ class Authorize extends CI_Controller
         $this->bot->pushMessage($id, new TextMessageBuilder('hello'));
 
         $user = $this->user_model->get_user($id);
-        if(!$user){
+        if(empty($user['id'])){
             $this->user_model->insert_user($id,$display_name,$status);
         }
 
